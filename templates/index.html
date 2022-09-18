@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Scraper</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Youtube Scraper !</h1>
+
+    <form method="post" action="{{ url_for('index') }}">
+        <label for="search">Enter the channel's name</label>
+        <input type="text" name="search_query" id="search-box" value="{{ request.form['search_query'] }}">
+        <input type="submit" value="Search">
+    </form>
+    
+    {% if status == 200 %}
+        <p>status: {{ status }}</p>
+        <a href="{{ channel_name }}" target="_blank">{{ channel_name }}</a>
+        
+        <hr>
+        
+        {% for title in html_text %}
+        <p>
+            <a href="{{ title[1] }}" target="_blank">{{ title[0] }}</a>
+            
+        </p>
+        {% endfor %}
+        
+    {% else %}
+        <p>{{ 'status: '+status|string if status else '' }}</p>
+        <p>Nothing to see yet. Select a Youtube channel name to begin.</p>
+    {% endif %}
+
+</body>
+</html>

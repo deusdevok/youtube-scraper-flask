@@ -1,0 +1,21 @@
+body {
+    background: #bbbaff;
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+label, input {
+    font-size: 22px;
+}
+
+a, p {
+    font-size: 18px;
+}
+
+hr {
+    background: #161616;
+    border: 1px solid #5f5f5f;
+}
